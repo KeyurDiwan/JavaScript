@@ -1,46 +1,88 @@
 /**
- * we will be given a list of objects like  these: 
- * [{ a: 12, b: 15, c: 25 },{ a: 22, b: 17, d: 27 },{ a: 12, b: 35, c: 29, d: 32 }].
- *  And you have to create a dropdown with a key as a label and its corresponding values 
- * as the elements in the dropdown. And you have to avoid the duplicate values in the 
- * dropdown. For e. g: for the label "a" the dropdown will contain 12,22 as the values.
- *  After that when the user selects something from the dropdown you should filter the
- *  objects from the list of objects given at first. For example, if the user selects the 
- * label "a" with the value of 12 then you should display 
- * { a: 12, b: 15, c: 25 },{ a: 12, b: 35, c: 29, d: 32 }.
+
  */
 
+ var providersJSON = {"providers": [
 
 
- var data = [
-    {
-      id: "america",
-      label: "America",
+  {
+    "state": "A",
+    "num":[ 
+      {
+        "obj": {
+        a: 12, b: 35, c: 29, d: 32}
       
-    },
+      }
+    ]
+  },
+  {
+    "state": "B",
+    "num":[
     {
-      id: "asia",
-      label: "Asia",
-   
-    },
-    {
-      id: "europe",
-      label: "Europe",
-   
+      "obj": {
+      a: 10, b: 30, c: 25}
+    
     }
-  ];
+    ]
+  },
+
+  {
+    "state": "C",
+    "num":[ 
+      {
+        "obj": {
+        a: 1, b: 5, c: 21}
+      
+      }
+    ]
+  },
   
-  var mySelect = document.getElementById("selectParent");
-  data.forEach(item => {
-    selectParent.innerHTML += `<option id="${item.id}" value="${item.id}">${item.label} kkk i</option`;
-  });
   
-  mySelect.addEventListener('change', function(){
-    handleChange();
-  });
-  
-  function handleChange() {
-  
-   
+]};
+
+var providers = providersJSON.providers;
+
+// console.log(providers[2].num[0].obj.a);
+
+//--------------------------//
+var div = document.getElementById("container");
+var option0 = document.createElement("option");
+option0.text = "";
+option0.value = "";
+var states = document.getElementById("states");
+states.appendChild(option0);
+
+
+for(var i = 0; i < providers.length; i++) {
+  var option = document.createElement("option");
+  option.text = providers[i].state;
+  option.value = providers[i].state;
+  states.appendChild(option);
+}
+
+states.onchange = function(e) {
+  e.preventDefault();
+  var selected = this.value
+  if (selected !== ""){
+    console.log(showNum(selected));
+  } else {
+    console.log("Back to square one.")
   }
-  
+}
+
+function showNum(selected) {
+  for (var i = 0; i < providers.length; i++) {
+    if (providers[i].state == selected) {
+      var num = providers[i].num;
+      div.innerHTML = "";
+      for(var n = 0; n < num.length; n++){
+        var p = document.createElement("p");
+        // console.log(num[n].obj)
+       
+        var text = document.createTextNode( "a:" + num[n].obj.a + " b:" + num[n].obj.b + " c:" + num[n].obj.c)
+        p.appendChild(text);
+        div.appendChild(p);
+      }
+    }
+  }
+}
