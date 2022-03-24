@@ -1,53 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.scss" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <style>
-    .container{
-  display: flex;
   
+
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang TC", "Heiti TC", 微軟正黑體, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.side{
-  flex: 2;
-  height: 100vh;
-  color: white;
-  background-color: skyblue;
-  overflow: scroll;
-  line-height: 300px;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.content{
-  flex: 2;
+body {
+  width: 100%;
   height: 100vh;
-  background-color: whitesmoke;
-  overflow: scroll;
-  line-height: 300px;
+  margin: 0;
+  padding: 0;
 }
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.split__left {
+  width: 50%;
+  height:100%;
+  background-color: green;
+}
+
+.split__right {
+  flex: 1; 
+  background-color: gray;
+}
+
+.split__bar {
+  background-color: black;
+  width: 15px;
+  
+  cursor: col-resize;
+}
+
+
+
+.con{
+    height: 100vh;
+    width: 100%;
+    display: block;
+    margin: 0;
+    background-color: green;
+    padding: 10px 20px;
+   
+   
+  }
+
+  .con2{
+    height: 100vh;
+    width: 100%;
+    display: block;
+    margin: 0;
+    background-color: gray;
+    padding: 10px 20px;
+   
+   
+  }
+
+  p {
+      font-family: "Helvetica", "Arial", sans-serif;
+      font-size: 40px;
+    }
+
+
+
+
 </style>
 <body>
-    <div class = "container">
-        <div class = "side">
-          left<br>
-          left<br>
-          left<br>
-          left<br>
-          left
-        </div>
-        <div class ="content">
-          right<br>
-          right<br>
-          right<br>
-          right<br>
-          right
-        </div>
-      </div>
+  <div class="container split">
+    <div class="split__left">
 
-
+      <div class="con" id="panal1"></div>
+      <div class="con" id="panal2"></div>
+      <div class="con" id="panal3"></div>
+    </div>
+    <div class="split__bar">
+      <div class="con" id="panal1"></div>
+      <div class="con" id="panal2"></div>
+      <div class="con" id="panal3"></div>
+    </div>
+    <div class="split__right">
+      <div class="con2" id="panal1">f</div>
+      <div class="con2" id="panal2">f</div>
+      <div class="con2" id="panal3">f</div>
+    </div>
+  </div>
 </body>
+
+<script>
+  const bar = document.querySelector('.split__bar');
+const left = document.querySelector('.split__left');
+let mouse_is_down = false;
+
+bar.addEventListener('mousedown', (e) => {
+  mouse_is_down = true;
+})
+
+document.addEventListener('mousemove', (e) => {
+  if (!mouse_is_down) return;
+
+  left.style.width = `${e.clientX}px`;
+})
+
+document.addEventListener('mouseup', () => {
+  mouse_is_down = false;
+})
+</script>
 </html>
