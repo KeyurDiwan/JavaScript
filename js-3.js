@@ -6,7 +6,7 @@
 function checkVowel(char) {
     let vowel = ['a', 'e', 'i', 'o', 'u'];
 
-    for(var i = 0; i < 4; i++) {
+    for(var i = 0; i <= 4; i++) {
         if(vowel[i] === char) {
             return true;
         }
