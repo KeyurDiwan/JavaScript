@@ -17,10 +17,10 @@ function translate(str) {
     }
     q = '';
     str.toLowerCase().split(' ').map(function(p, c) {
-        q += lexicon[p] + " ";
+        q =  (q && "") + q + lexicon[p] 
     }) 
 
-    console.log(q);
+    console.log('start' + q + 'end');
 }
 
 var str = "Merry Christmas and Happy New Year";
