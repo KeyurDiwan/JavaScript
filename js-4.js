@@ -9,17 +9,16 @@
 var arr = [];
 
 var str = 'this is fun';
-
+str = str.split('')
 for(var i = 0; i < str.length; i++) {
     if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u'){
-        arr.push(str[i]);
+      continue;
     }else if(str[i] == ' '){
-        arr.push(' ')
+    //    continue;
     } else {
-        arr.push(str[i]);
-        arr.push('o');
-        arr.push(str[i]);
+       str[i] = str[i] + 'o' + str[i];
+      
     }
 }
 
-console.log(arr.join(''))
+console.log(str.join(''))
