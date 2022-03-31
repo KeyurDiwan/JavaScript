@@ -14,13 +14,13 @@ var winnerCondition = [
   [0,4,8]
 ];
 //Squares Html variable
-var squareHtml  = '<div className="board-row">';
+var squareHtml  = '<div class="board-row">';
 var xIsNext = true;
 var winner  = false;
 // Render squares
 for(let i=0; i<squares.length;i++){
   if(i % 3 === 0 && i > 0){
-    squareHtml += '</div><div className="board-row">';
+    squareHtml += '</div><div class="board-row">';
     squareHtml += buildSquare(i);
   }else{
     squareHtml += buildSquare(i);
