@@ -128,16 +128,50 @@ function handleClick(index){
 
  */
 function calculateWinner(sqs){
+  let j = 0;
+  let flag = true;
   for(let i=0;i<winnerCondition.length;i++){
     // console.log("sqs",sqs)
-    const [p1,p2,p3,p4] = winnerCondition[i];
-   
-    if(sqs[p1] && sqs[p1] === sqs[p2] && sqs[p1] === sqs[p3] && sqs[p1] === sqs[p4]){
-      winner = sqs[p1];
-      alert(`${winner} is winner`);
-      return winner;
+    // const [p1,p2,p3,p4] = winnerCondition[i];
+ 
+
+ 
+  // if(sqs[winnerCondition[i][0]] && sqs[winnerCondition[i][0]] === sqs[winnerCondition[i][1]] && sqs[winnerCondition[i][0]] === sqs[winnerCondition[i][2]] && sqs[winnerCondition[i][0]] === sqs[winnerCondition[i][3]]){
+  //   winner = sqs[winnerCondition[i][0]];
+  //   alert(`${winner} is winner`);
+  //   return winner;
+  // } 
+    
+
+ 
+let flag = true;
+  if(sqs[winnerCondition[i][0]]) {
+
+
+    for(let k = 0; k < sizeOfSqure; k++) {
+    
+      if(sqs[winnerCondition[i][0]] === sqs[winnerCondition[i][k]] ) {
+
+        flag = true
+      
+      } else {
+
+        flag = false;
+        break;
+
+      }
     }
+
+    
+if(flag) {
+  winner = sqs[winnerCondition[i][0]];
+    alert(`${winner} is winner`);
+    return winner;
   }
+}
+}
+
+ 
   //Get marked square 
   var filtered = sqs.filter(function(e){
     return e != '';
