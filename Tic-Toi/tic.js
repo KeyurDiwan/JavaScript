@@ -72,7 +72,7 @@ function handleClick(index) {
   document.getElementById(elementId).innerHTML = xIsNext ? "X" : "O";
   xIsNext = xIsNext ? false : true;
   document.getElementById("status").innerHTML = xIsNext ? "X" : "O";
-  
+  // check winner conditions 
   if (
     calculateWinner(sqs, winnerCol) ||
     calculateWinner(sqs, winnerRow) ||
